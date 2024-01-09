@@ -1,13 +1,85 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* || VARIABLES*/
+:root {
+  /* COLORS */
+  --BGCOLOR: #011638;
+  --ERROR: firebrick;
+  --COLOR: #fff;
+  --LINK-COLOR: whitesmoke;
+  --LINK-HOVER: rgba(245, 245, 245, 0.411);
+  --BORDER-COLOR: #fff;
+  --INACTIVE: lightgray;
+  --TABLE-COLOR: #000;
+  --TABLE-BGCOLOR: #fff;
+  --INACTIVE: lightgray;
+  --INVALID: red;
+}
+
+/* || UTILITY CLASSES*/
+.nowrap {
+  white-space: nowrap;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.errmsg {
+  display: inline-block;
+  font-size: 1.25rem;
+  padding: 0.25em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  color: var(--ERROR);
+  background-color: var(--COLOR);
+  text-align: center;
+}
+
+.errmsg a:any-link {
+  color: var(--ERROR);
+}
+
+/* || GENERAL STYLES*/
+body {
+  min-height: 100vh;
+  background-color: var(--BGCOLOR);
+  color: var(--COLOR);
+  background-image: url(./img/background.jpg);
+  background-size: cover;
+  background-position: top right;
+  background-blend-mode: multiply;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-flow: column nowrap;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+a:visited {
+  color: var(--LINK-COLOR);
+}
+
+a:hover,
+a:focus {
+  color: var(--LINK-HOVER);
 }
