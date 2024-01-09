@@ -199,3 +199,22 @@ tr {
   font-size: 1.5rem;
   color: var(--TABLE-COLOR);
 }
+
+.table--result {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.table--result-p {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+  padding: 0.5em;
+  background-color: var(--BGCOLOR);
+}
+
+.result--section {
+  margin: 0 auto;
+  max-width: 800px;
+  border-right: 1px solid var(--BORDER-COLOR);
+  border-left: 1px solid var(--BORDER-COLOR);
+}

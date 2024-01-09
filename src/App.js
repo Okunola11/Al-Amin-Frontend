@@ -5,6 +5,7 @@ import DashLayout from "./components/DashLayout";
 import Welcome from "./features/auth/Welcome";
 import UsersList from "./features/users/UsersList";
 import StudentsList from "./features/students/StudentsList";
+import ResultsList from "./features/results/ResultsList";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
 
           <Route path="students">
             <Route index element={<StudentsList />} />
+          </Route>
+
+          <Route path="results">
+            <Route index element={<ResultsList />} />
           </Route>
         </Route>
       </Route>
