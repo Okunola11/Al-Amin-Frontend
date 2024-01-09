@@ -5,7 +5,7 @@ const Public = () => {
     <section className="public">
       <header>
         <h1>
-          Welcome to <span className="nowrap">Al Amin Schools</span>
+          Welcome to <span className="nowrap">Al Amin Schools !</span>
         </h1>
       </header>
       <main className="public__main">
@@ -24,9 +24,13 @@ const Public = () => {
         <br />
         <p>Owner: Chun Lee</p>
       </main>
-      <footer>
-        <Link to="/login">Employee Login</Link>
-        <Link>Student login</Link>
+      <footer className="public__footer">
+        <p>
+          <Link to="/login">Employee Login</Link>
+        </p>
+        <p>
+          <Link>Student Login</Link>
+        </p>
       </footer>
     </section>
   );

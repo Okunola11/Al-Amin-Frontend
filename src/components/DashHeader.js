@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const DashHeader = () => {
   return (
-    <header>
+    <header className="dash-header">
       <div className="dash-header__container">
         <Link to="/dash">
           <h1>Al Amin</h1>

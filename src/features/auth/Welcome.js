@@ -7,7 +7,7 @@ const Welcome = () => {
     timeStyle: "long",
   }).format(date);
   return (
-    <section>
+    <section className="welcome">
       <p>{today}</p>
       <h2>Welcome!</h2>
       <p>

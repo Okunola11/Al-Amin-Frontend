@@ -8,6 +8,7 @@
 :root {
   /* COLORS */
   --BGCOLOR: #011638;
+  --HEADING: #0f172a;
   --ERROR: firebrick;
   --COLOR: #fff;
   --LINK-COLOR: whitesmoke;
@@ -82,4 +83,65 @@ a:visited {
 a:hover,
 a:focus {
   color: var(--LINK-HOVER);
+}
+
+/* || PAGES*/
+.public,
+.welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.public {
+  flex-grow: 1;
+  padding: 1em;
+}
+
+.public__main {
+  flex-grow: 1;
+  padding: 1em 0;
+  border-top: 2px solid var(--BORDER-COLOR);
+  border-bottom: 2px solid var(--BORDER-COLOR);
+}
+
+.public__addr {
+  margin-top: 1em;
+}
+
+.public__footer {
+  display: flex;
+  gap: 1em;
+}
+
+.welcome a::before {
+  content: "➜";
+}
+
+/* || DASH*/
+
+.dash-header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background-color: var(--HEADING);
+  padding: 0 0.5em;
+  border-bottom: 1px solid var(--BORDER-COLOR);
+}
+
+.dash-container {
+  flex-grow: 1;
+  padding: 0.75em 0.5em 0.5em;
+}
+
+.dash-footer {
+  position: sticky;
+  bottom: 0;
+  background-color: var(--HEADING);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  gap: 1em;
+  padding: 0.5em;
+  border-top: 1px solid var(--BORDER-COLOR);
 }
