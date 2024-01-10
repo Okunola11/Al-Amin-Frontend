@@ -16,7 +16,6 @@ export const resultsApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
       transformResponse: (responseData) => {
-        console.log(responseData);
         const loadedData = responseData.map((result) => {
           result.id = result._id;
           return result;

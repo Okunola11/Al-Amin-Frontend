@@ -5,19 +5,30 @@ import {
   faTimes,
   faCheck,
   faInfoCircle,
-  faInfo,
 } from "@fortawesome/free-solid-svg-icons";
+import { useCreateNewUserMutation } from "./usersApiSlice";
+import { useNavigate } from "react-router-dom";
 
-const username_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{4,23}$/;
+const username_REGEX = /^(?=(?:\S*\s?\S*){2,3}$)[a-zA-Z\s]{10,25}$/;
+const userId_REGEX = /^[a-zA-Z0-9]{4}[/][a-zA-Z0-9-_]{3,7}$/;
 const password_REGEX =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{4,23}$/;
 
 const NewUserForm = () => {
+  const [createNewUser, { isLoading, isSuccess, isError, error }] =
+    useCreateNewUserMutation();
+
+  const navigate = useNavigate();
+
   const usernameRef = useRef();
 
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState(false);
   const [usernameFocus, setUsernameFocus] = useState(false);
+
+  const [userId, setUserId] = useState("");
+  const [validUserId, setValidUserId] = useState(false);
+  const [userIdFocus, setUserIdFocus] = useState(false);
 
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(false);
@@ -36,18 +47,34 @@ const NewUserForm = () => {
   useEffect(() => {
     const validUser = username_REGEX.test(username);
     setValidUsername(validUser);
-  }, []);
+  }, [username]);
+
+  useEffect(() => {
+    setValidUserId(userId_REGEX.test(userId));
+  }, [userId]);
 
   useEffect(() => {
     const ValidPwd = password_REGEX.test(password);
     setValidPassword(ValidPwd);
     const matchPwd = password === matchPassword;
     setValidMatchPassword(matchPwd);
-  }, []);
+  }, [password, matchPassword]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setUsername("");
+      setUserId("");
+      setPassword("");
+      setMatchPassword("");
+      setRoles([]);
+      navigate("/dash/users");
+    }
+  }, [isSuccess, navigate]);
 
   const onUsernameChange = (e) => setUsername(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
   const onMatchChange = (e) => setMatchPassword(e.target.value);
+  const onUserIdChange = (e) => setUserId(e.target.value);
 
   const rolesOption = Object.values(ROLES).map((role) => (
     <option key={role} value={role}>
@@ -61,8 +88,14 @@ const NewUserForm = () => {
     setRoles(value);
   };
 
-  const handleSubmit = (e) => {
+  const canSave =
+    [validUsername, validUserId, password, matchPassword, roles.length].every(
+      Boolean
+    ) && !isLoading;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await createNewUser({ username, usernum: userId, password, roles });
   };
 
   const content = (
@@ -73,7 +106,7 @@ const NewUserForm = () => {
         <h2>Add New Employee</h2>
 
         <label className="form__label" htmlFor="username" aria-live="assertive">
-          Username
+          Employee Name
           <span className={validUsername ? "valid" : "hide"}>
             {<FontAwesomeIcon icon={faCheck} />}
           </span>
@@ -101,11 +134,45 @@ const NewUserForm = () => {
           }
         >
           <FontAwesomeIcon icon={faInfoCircle} /> <br />
-          4 to 23 characters.
+          10 to 25 characters.
           <br />
-          Must begin with a letter.
+          Two or three words
           <br />
-          Letter, numbers, hypen, underscore allowed
+          Letters only. A space allowed between
+          <br />
+        </p>
+
+        <label className="form__label" htmlFor="userId" aria-live="assertive">
+          Employee ID
+          <span className={validUserId ? "valid" : "hide"}>
+            {<FontAwesomeIcon icon={faCheck} />}
+          </span>
+          <span className={!validUserId && userId ? "invalid" : "hide"}>
+            {<FontAwesomeIcon icon={faTimes} />}
+          </span>
+        </label>
+        <input
+          className="form__input"
+          type="text"
+          id="userId"
+          value={userId}
+          onChange={onUserIdChange}
+          required
+          autoComplete="off"
+          onFocus={() => setUserIdFocus(true)}
+          onBlur={() => setUserIdFocus(false)}
+        />
+        <p
+          className={
+            userIdFocus && userId && !validUserId ? "instructions" : "offscreen"
+          }
+        >
+          <FontAwesomeIcon icon={faInfoCircle} /> <br />
+          8 to 12 characters.
+          <br />
+          Must be in line with the organization standards
+          <br />
+          starts with a 4 digit or letter a / and other digit or letter
           <br />
         </p>
 
@@ -133,7 +200,7 @@ const NewUserForm = () => {
             passwordFocus && !validPassword ? "instructions" : "offscreen"
           }
         >
-          <FontAwesomeIcon icon={faInfo} /> <br />
+          <FontAwesomeIcon icon={faInfoCircle} /> <br />
           8 to 23 characters <br />
           Must include a uppercase, lowercase letters, a number and special
           characters <br />
@@ -178,7 +245,11 @@ const NewUserForm = () => {
           Must be the same as Password
         </p>
 
-        <label className="form__roles" htmlFor="roles" aria-live="assertive">
+        <label
+          className="form__roles form__label"
+          htmlFor="roles"
+          aria-live="assertive"
+        >
           Roles
         </label>
         <select
@@ -192,8 +263,11 @@ const NewUserForm = () => {
         >
           {rolesOption}
         </select>
-
-        <button className="form __button">Add User</button>
+        <div className="button__container">
+          <div className="form__button">
+            <button disabled={!canSave}>Add User</button>
+          </div>
+        </div>
       </form>
     </section>
   );

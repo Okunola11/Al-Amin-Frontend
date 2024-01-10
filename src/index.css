@@ -19,6 +19,7 @@
   --TABLE-BGCOLOR: #fff;
   --INACTIVE: lightgray;
   --INVALID: red;
+  --VALID: limegreen;
 }
 
 /* || UTILITY CLASSES*/
@@ -29,6 +30,10 @@
 .offscreen {
   position: absolute;
   left: -9999px;
+}
+
+.hide {
+  display: none;
 }
 
 .errmsg {
@@ -127,6 +132,7 @@ a:focus {
   background-color: var(--HEADING);
   padding: 0 0.5em;
   border-bottom: 1px solid var(--BORDER-COLOR);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .dash-container {
@@ -217,4 +223,96 @@ tr {
   max-width: 800px;
   border-right: 1px solid var(--BORDER-COLOR);
   border-left: 1px solid var(--BORDER-COLOR);
+}
+
+/* || NewUserForm*/
+.newUser {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.form__label {
+  margin-top: 10px;
+}
+
+.form__input {
+  padding: 0.75em;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 1px solid var(--LINK-COLOR);
+}
+
+.form__input--roles {
+  display: block;
+  padding: 0.5em;
+  /* width: 200px; */
+  margin-bottom: 10px;
+  border: 1px solid var(--BORDER-COLOR);
+  border-radius: 4px;
+  color: #333;
+}
+
+.form__input--roles:hover {
+  border-color: #666;
+}
+
+.form__input--roles:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+}
+
+/* Style for the options */
+.form__input--roles option {
+  padding: 0.1em;
+  color: #333;
+}
+
+.form__input--roles option:hover {
+  background-color: #f0f0f0;
+}
+
+.form {
+  button {
+    background-color: #d7dfd8;
+    color: var(--TABLE-COLOR);
+    padding: 12px 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 200px;
+    display: grid;
+    place-content: center;
+  }
+}
+.button__container {
+  display: flex;
+  justify-content: center;
+}
+
+.valid {
+  color: var(--VALID);
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: var(--INVALID);
+  margin-left: 0.25rem;
+}
+
+.instructions {
+  color: var(--INVALID);
+  font-size: 1rem;
 }
