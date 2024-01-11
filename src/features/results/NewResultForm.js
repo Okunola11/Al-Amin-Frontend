@@ -39,7 +39,11 @@ const NewResultForm = ({ subjectsWithResult, studentId }) => {
     console.log(formData.subjects);
   };
 
-  const canSave = [studentId, formData].every(Boolean) && !isLoading;
+  const canSave = () => {
+    return (
+      formData.subjects.some((subject) => subject.result === "") || isLoading
+    );
+  };
 
   let content;
   if (subjectsWithResult?.length) {
@@ -49,9 +53,7 @@ const NewResultForm = ({ subjectsWithResult, studentId }) => {
           {error?.data?.message}
         </p>
 
-        <label className="newResult__label" htmlFor="subjects">
-          Subjects
-        </label>
+        <label htmlFor="subjects">Subjects</label>
         {formData.subjects.map((subject, index) => (
           <div key={index} className="newResult__div">
             <input
@@ -71,7 +73,7 @@ const NewResultForm = ({ subjectsWithResult, studentId }) => {
             />
           </div>
         ))}
-        <button className="newResult__button" type="submit" disabled={!canSave}>
+        <button className="newResult__button" disabled={canSave()}>
           Submit
         </button>
       </form>

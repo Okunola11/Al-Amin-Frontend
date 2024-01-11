@@ -52,12 +52,10 @@ const NewResultSubjects = ({ students }) => {
         <div className="newResult__div1">
           <div className="newResult__div2">
             <div className="newResult__label">
-              <label htmlFor="classname" className="newResult__label">
-                Class
-              </label>
+              <label htmlFor="classname">Class</label>
             </div>
             <select
-              className="newResult__input"
+              className="newResult__select"
               name="classname"
               id="classname"
               value={classname}
@@ -70,12 +68,12 @@ const NewResultSubjects = ({ students }) => {
 
           <div className="newResult__div2">
             <div className="newResult__label">
-              <label className="newResult__label" htmlFor="studentname">
+              <label className="nowrap" htmlFor="studentname">
                 Student Name
               </label>
             </div>
             <select
-              className="newResult__input"
+              className="newResult__select"
               name="studentname"
               id="studentname"
               value={studentId}

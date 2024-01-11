@@ -349,6 +349,22 @@ tr {
   width: 300px;
 }
 
+.newResult__label {
+  border: 1px solid var(--BORDER-COLOR);
+  padding: 8px;
+  background-color: var(--BGCOLOR);
+  border-radius: 5px;
+  margin: 1em 0;
+}
+
+.newResult__select {
+  padding: 8px;
+  margin: 5px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
 .newResult__form {
   display: flex;
   flex-direction: column;
