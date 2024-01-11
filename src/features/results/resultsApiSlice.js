@@ -33,10 +33,19 @@ export const resultsApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+    createNewResult: builder.mutation({
+      query: (initialData) => ({
+        url: "/results",
+        method: "POST",
+        body: { ...initialData },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Result", id: "LIST" }],
+    }),
   }),
 });
 
-export const { useGetResultsQuery } = resultsApiSlice;
+export const { useGetResultsQuery, useCreateNewResultMutation } =
+  resultsApiSlice;
 
 // select all gotten data
 export const selectResultsOutcome =
