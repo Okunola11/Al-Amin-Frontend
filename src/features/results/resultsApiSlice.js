@@ -41,11 +41,24 @@ export const resultsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (result, error, arg) => [{ type: "Result", id: "LIST" }],
     }),
+    updateResult: builder.mutation({
+      query: (initialData) => ({
+        url: "/results",
+        method: "PATCH",
+        body: { ...initialData },
+        invalidatesTags: (result, error, arg) => [
+          { type: "Result", id: arg.id },
+        ],
+      }),
+    }),
   }),
 });
 
-export const { useGetResultsQuery, useCreateNewResultMutation } =
-  resultsApiSlice;
+export const {
+  useGetResultsQuery,
+  useCreateNewResultMutation,
+  useUpdateResultMutation,
+} = resultsApiSlice;
 
 // select all gotten data
 export const selectResultsOutcome =

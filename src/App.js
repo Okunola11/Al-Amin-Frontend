@@ -9,6 +9,7 @@ import ResultsList from "./features/results/ResultsList";
 import NewUserForm from "./features/users/NewUserForm";
 import NewStudent from "./features/students/NewStudent";
 import NewResult from "./features/results/NewResult";
+import EditResult from "./features/results/EditResult";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="results">
             <Route index element={<ResultsList />} />
             <Route path="new" element={<NewResult />} />
+            <Route path=":id" element={<EditResult />} />
           </Route>
         </Route>
       </Route>
