@@ -10,6 +10,7 @@ import NewUserForm from "./features/users/NewUserForm";
 import NewStudent from "./features/students/NewStudent";
 import NewResult from "./features/results/NewResult";
 import EditResult from "./features/results/EditResult";
+import EditStudent from "./features/students/EditStudent";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="students">
             <Route index element={<StudentsList />} />
             <Route path="new" element={<NewStudent />} />
+            <Route path=":id" element={<EditStudent />} />
           </Route>
 
           <Route path="results">

@@ -43,11 +43,24 @@ export const studentsApiSlice = apiSlice.injectEndpoints({
         { type: "Student", id: "LIST" },
       ],
     }),
+    updateStudent: builder.mutation({
+      query: (initialData) => ({
+        url: "/students",
+        method: "PATCH",
+        body: { ...initialData },
+        invalidatesTags: (result, error, arg) => [
+          { type: "Student", id: arg.id },
+        ],
+      }),
+    }),
   }),
 });
 
-export const { useGetStudentsQuery, useCreateNewStudentMutation } =
-  studentsApiSlice;
+export const {
+  useGetStudentsQuery,
+  useCreateNewStudentMutation,
+  useUpdateStudentMutation,
+} = studentsApiSlice;
 
 // select all gotten students
 export const selectStudentsResult =

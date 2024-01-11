@@ -9,7 +9,7 @@ const Student = ({ studentId }) => {
 
   const student = useSelector((state) => selectStudentsById(state, studentId));
   if (student) {
-    const subjects = student.subjects.toString().replace(",", ", ");
+    const subjects = student.subjects.toString().replaceAll(",", ", ");
 
     const handleEdit = () => navigate(`/dash/students/${studentId}`);
 
@@ -19,7 +19,7 @@ const Student = ({ studentId }) => {
         <td className="table__cell">{student.usernum}</td>
         <td className="table__cell">{student.classname}</td>
         <td className="table__cell">{subjects}</td>
-        <td className="table__cell">{student.teacher}</td>
+        <td className="table__cell">{student.teachername}</td>
         <td className="table__cell">
           <button className="table__button" onClick={handleEdit}>
             <FontAwesomeIcon icon={faPenToSquare} />
