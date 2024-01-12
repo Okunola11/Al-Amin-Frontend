@@ -8,6 +8,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { useUpdateStudentMutation } from "./studentsApiSlice";
+import { useDeleteStudentMutation } from "./studentsApiSlice";
 import { useNavigate } from "react-router-dom";
 
 const username_REGEX = /^(?=(?:\S*\s?\S*){2,3}$)[a-zA-Z\s]{10,25}$/;
@@ -18,6 +19,11 @@ const password_REGEX =
 const EditStudentForm = ({ student, teachers }) => {
   const [updateResult, { isLoading, isSuccess, isError, error }] =
     useUpdateStudentMutation();
+
+  const [
+    deleteStudent,
+    { isSuccess: isDelSuccess, isError: isDelError, error: delError },
+  ] = useDeleteStudentMutation();
 
   const navigate = useNavigate();
 
@@ -56,7 +62,7 @@ const EditStudentForm = ({ student, teachers }) => {
   }, [password, matchPassword]);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess || isDelSuccess) {
       setUsername("");
       setUserId("");
       setPassword("");
@@ -66,7 +72,7 @@ const EditStudentForm = ({ student, teachers }) => {
       setTeacherId("");
       navigate("/dash/students");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate]);
 
   const onUsernameChange = (e) => setUsername(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
@@ -117,15 +123,22 @@ const EditStudentForm = ({ student, teachers }) => {
     });
   };
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    await deleteStudent({ id: student.id });
+  };
+
   const content = (
     <section className="newUser">
-      <p className={isError ? "errmsg" : "offscreen"}>{error?.data.message}</p>
+      <p className={isError || isDelError ? "errmsg" : "offscreen"}>
+        {error?.data.message || delError?.data?.message}
+      </p>
 
       <form className="form" onSubmit={handleSubmit}>
         <h2>Edit Student</h2>
 
         <label className="form__label" htmlFor="username" aria-live="assertive">
-          Employee Name
+          Student Name
           <span className={validUsername ? "valid" : "hide"}>
             {<FontAwesomeIcon icon={faCheck} />}
           </span>
@@ -303,6 +316,9 @@ const EditStudentForm = ({ student, teachers }) => {
           <div className="form__button">
             <button disabled={!canSave}>Edit Student</button>
           </div>
+          <button className="form__button--delete" onClick={handleDelete}>
+            Delete Student
+          </button>
         </div>
       </form>
     </section>

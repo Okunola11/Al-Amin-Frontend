@@ -304,8 +304,8 @@ tr {
 
 .form {
   button {
-    background-color: #d7dfd8;
-    color: var(--TABLE-COLOR);
+    background-color: #4caf50;
+    color: var(--COLOR);
     padding: 12px 10px;
     border: none;
     border-radius: 10px;
@@ -314,10 +314,16 @@ tr {
     display: grid;
     place-content: center;
   }
+
+  .form__button--delete {
+    background-color: var(--INVALID);
+    color: var(--COLOR);
+  }
 }
 .button__container {
   display: flex;
   justify-content: center;
+  gap: 1em;
 }
 
 .valid {

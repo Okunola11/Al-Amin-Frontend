@@ -53,6 +53,16 @@ export const studentsApiSlice = apiSlice.injectEndpoints({
         ],
       }),
     }),
+    deleteStudent: builder.mutation({
+      query: ({ id }) => ({
+        url: "/students",
+        method: "DELETE",
+        body: { id },
+        invalidatesTags: (result, error, arg) => [
+          { type: "Student", id: arg.id },
+        ],
+      }),
+    }),
   }),
 });
 
@@ -60,6 +70,7 @@ export const {
   useGetStudentsQuery,
   useCreateNewStudentMutation,
   useUpdateStudentMutation,
+  useDeleteStudentMutation,
 } = studentsApiSlice;
 
 // select all gotten students
