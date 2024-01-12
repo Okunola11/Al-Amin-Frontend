@@ -409,6 +409,17 @@ tr {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin: 5px 0;
+}
+
+.newResult__button--delete {
+  background-color: var(--INVALID);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .editResult__p {

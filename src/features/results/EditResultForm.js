@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useUpdateResultMutation } from "./resultsApiSlice";
+import { useDeleteResultMutation } from "./resultsApiSlice";
 import { useNavigate } from "react-router-dom";
 
 const EditResultForm = ({ result }) => {
@@ -8,6 +9,11 @@ const EditResultForm = ({ result }) => {
   const [updateResult, { isLoading, isSuccess, isError, error }] =
     useUpdateResultMutation();
 
+  const [
+    deleteResult,
+    { isSuccess: isDelSuccess, isError: isDelError, error: delError },
+  ] = useDeleteResultMutation();
+
   const [formData, setFormData] = useState(JSON.parse(JSON.stringify(result)));
   // JSON.parse was used because I had to create a deep copy of the object to modify it. Spread operation at
   // <EditResult /> didn't work, it threw an error instead. My research made me understand that happened
@@ -15,11 +21,11 @@ const EditResultForm = ({ result }) => {
   // It feels like a cheat but yeah, stringifying then parsing the object works
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess || isDelSuccess) {
       setFormData([{}]);
       navigate("/dash/results");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate]);
 
   const handleChange = (e, index) => {
     const { value, name } = e.target;
@@ -43,9 +49,16 @@ const EditResultForm = ({ result }) => {
     });
   };
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    await deleteResult({ id: result.id });
+  };
+
   const content = (
     <section className="newResult">
-      <p className={isError ? "errmsg" : "offscreen"}>{error?.data?.message}</p>
+      <p className={isError || isDelError ? "errmsg" : "offscreen"}>
+        {error?.data?.message || delError?.data?.message}
+      </p>
 
       <form className="newResult__form" onSubmit={handleSubmit}>
         <h2>Edit Result Form</h2>
@@ -71,8 +84,19 @@ const EditResultForm = ({ result }) => {
             />
           </div>
         ))}
-        <button className="newResult__button" disabled={canSave()}>
+        <button
+          type="submit"
+          className="newResult__button"
+          disabled={canSave()}
+        >
           Submit
+        </button>
+        <button
+          type="button"
+          onClick={handleDelete}
+          className="newResult__button--delete"
+        >
+          Delete Result
         </button>
       </form>
     </section>

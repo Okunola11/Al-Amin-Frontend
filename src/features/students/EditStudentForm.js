@@ -122,7 +122,7 @@ const EditStudentForm = ({ student, teachers }) => {
       <p className={isError ? "errmsg" : "offscreen"}>{error?.data.message}</p>
 
       <form className="form" onSubmit={handleSubmit}>
-        <h2>Edit Employee</h2>
+        <h2>Edit Student</h2>
 
         <label className="form__label" htmlFor="username" aria-live="assertive">
           Employee Name
@@ -176,7 +176,7 @@ const EditStudentForm = ({ student, teachers }) => {
           <FontAwesomeIcon icon={faInfoCircle} /> <br />
           8 to 12 characters.
           <br />
-          Must be in line with the organization standards
+          Must be in line with the organization's standards
           <br />
           starts with a 4 digit or letter a / and other digit or letter
           <br />

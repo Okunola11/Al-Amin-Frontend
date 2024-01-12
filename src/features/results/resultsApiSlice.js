@@ -51,6 +51,16 @@ export const resultsApiSlice = apiSlice.injectEndpoints({
         ],
       }),
     }),
+    deleteResult: builder.mutation({
+      query: ({ id }) => ({
+        url: "/results",
+        method: "DELETE",
+        body: { id },
+        invalidatesTags: (result, error, arg) => [
+          { type: "Result", id: arg.id },
+        ],
+      }),
+    }),
   }),
 });
 
@@ -58,6 +68,7 @@ export const {
   useGetResultsQuery,
   useCreateNewResultMutation,
   useUpdateResultMutation,
+  useDeleteResultMutation,
 } = resultsApiSlice;
 
 // select all gotten data
