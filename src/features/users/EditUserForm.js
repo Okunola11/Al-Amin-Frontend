@@ -7,6 +7,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { useUpdateUserMutation } from "./usersApiSlice";
+import { useDeleteUserMutation } from "./usersApiSlice";
 import { useNavigate } from "react-router-dom";
 
 const username_REGEX = /^(?=(?:\S*\s?\S*){2,3}$)[a-zA-Z\s]{10,25}$/;
@@ -17,6 +18,11 @@ const password_REGEX =
 const EditUserForm = ({ user }) => {
   const [updateUser, { isLoading, isSuccess, isError, error }] =
     useUpdateUserMutation();
+
+  const [
+    deleteUser,
+    { isSuccess: isDelSuccess, isError: isDelError, error: delError },
+  ] = useDeleteUserMutation();
 
   const navigate = useNavigate();
 
@@ -53,7 +59,7 @@ const EditUserForm = ({ user }) => {
   }, [password, matchPassword]);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess || isDelSuccess) {
       setUsername("");
       setUserId("");
       setPassword("");
@@ -61,7 +67,7 @@ const EditUserForm = ({ user }) => {
       setRoles([]);
       navigate("/dash/users");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate]);
 
   const onUsernameChange = (e) => setUsername(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
@@ -95,9 +101,16 @@ const EditUserForm = ({ user }) => {
       active,
     });
   };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    await deleteUser({ id: user.id });
+  };
   const content = (
     <section className="newUser">
-      <p className={isError ? "errmsg" : "offscreen"}>{error?.data.message}</p>
+      <p className={isError || isDelError ? "errmsg" : "offscreen"}>
+        {error?.data.message || delError?.data?.message}
+      </p>
 
       <form className="form" onSubmit={handleSubmit}>
         <h2>Edit Employee</h2>
@@ -250,8 +263,17 @@ const EditUserForm = ({ user }) => {
         </select>
         <div className="button__container">
           <div className="form__button">
-            <button disabled={!canSave}>Update Employee</button>
+            <button type="submit" disabled={!canSave}>
+              Update Employee
+            </button>
           </div>
+          <button
+            type="button"
+            className="form__button--delete"
+            onClick={handleDelete}
+          >
+            Delete Employee
+          </button>
         </div>
       </form>
     </section>
