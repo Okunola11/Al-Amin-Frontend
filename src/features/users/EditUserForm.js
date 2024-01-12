@@ -262,11 +262,9 @@ const EditUserForm = ({ user }) => {
           {rolesOption}
         </select>
         <div className="button__container">
-          <div className="form__button">
-            <button type="submit" disabled={!canSave}>
-              Update Employee
-            </button>
-          </div>
+          <button type="submit" disabled={!canSave}>
+            Update Employee
+          </button>
           <button
             type="button"
             className="form__button--delete"

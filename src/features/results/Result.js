@@ -39,7 +39,9 @@ const Result = ({ resultId }) => {
                 <td className="table__cell">{subject.name}</td>
                 <td className="table__cell">{subject.result}</td>
                 <td className="table__cell">{subject.grade}</td>
-                <td className="table__cell">{subject.standing}</td>
+                <td className={`table__cell ${subject.standing}`}>
+                  {subject.standing}
+                </td>
               </tr>
             ))}
           </tbody>

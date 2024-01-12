@@ -27,3 +27,5 @@
 25. [] I want grades and academic standing to be calculated from this result
 26. [] I want students to view their results, grade and academic standing
 27. [] Desktop mode is most important but should be available in mobile
+28. [] I want to make sure students can't be deleted if they have a result in the database
+29. [] I want to make sure Employees can't be deletd if they are class teachers

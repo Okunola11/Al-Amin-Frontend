@@ -313,9 +313,7 @@ const EditStudentForm = ({ student, teachers }) => {
         </select>
 
         <div className="button__container">
-          <div className="form__button">
-            <button disabled={!canSave}>Edit Student</button>
-          </div>
+          <button disabled={!canSave}>Edit Student</button>
           <button className="form__button--delete" onClick={handleDelete}>
             Delete Student
           </button>

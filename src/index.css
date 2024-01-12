@@ -433,6 +433,27 @@ tr {
   /* text-align: center; */
 }
 
+/* || STYLES FOR RESULTS STANDING*/
+.Excellent {
+  color: #139c18;
+}
+
+.Good {
+  color: #0a3985;
+}
+
+.Average {
+  color: hsl(60, 96%, 33%);
+}
+
+.Fair {
+  color: orange;
+}
+
+.Poor {
+  color: var(--INVALID);
+}
+
 @media screen and (max-width: 400px) {
   h1 {
     font-size: 2rem;
