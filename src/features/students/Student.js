@@ -15,12 +15,12 @@ const Student = ({ studentId }) => {
 
     return (
       <tr>
-        <td className="table__cell">{student.username}</td>
-        <td className="table__cell">{student.usernum}</td>
-        <td className="table__cell">{student.classname}</td>
-        <td className="table__cell">{subjects}</td>
-        <td className="table__cell">{student.teachername}</td>
-        <td className="table__cell">
+        <td className="table__cell student__name">{student.username}</td>
+        <td className="table__cell student__id">{student.usernum}</td>
+        <td className="table__cell student__class">{student.classname}</td>
+        <td className="table__cell student__courses">{subjects}</td>
+        <td className="table__cell student__teacher">{student.teachername}</td>
+        <td className="table__cell student__edit">
           <button className="table__button" onClick={handleEdit}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>

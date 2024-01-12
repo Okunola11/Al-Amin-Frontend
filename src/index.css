@@ -169,12 +169,7 @@ tr {
 }
 
 .table--students {
-  font-size: 1rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
-  color: var(--TABLE-COLOR);
-  gap: 0.1em;
-  width: 100%;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
 }
 
 .table__thead {
@@ -228,6 +223,12 @@ tr {
   max-width: 800px;
   border-right: 1px solid var(--BORDER-COLOR);
   border-left: 1px solid var(--BORDER-COLOR);
+}
+
+/* || STUDENT LIST*/
+.student__courses,
+.student__teacher {
+  display: none;
 }
 
 /* || NewUserForm*/
@@ -287,6 +288,18 @@ tr {
 
 .form__input--roles option:hover {
   background-color: #f0f0f0;
+}
+
+.form__active {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.form__active--button {
+  margin-left: 1em;
+  width: 24px;
+  height: 24px;
 }
 
 .form {
@@ -401,4 +414,30 @@ tr {
 .editResult__p {
   margin: 0.75em 0;
   /* text-align: center; */
+}
+
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 1.25rem;
+  }
+
+  .dash-header {
+    padding: 0.1em;
+  }
+
+  .table--students {
+    font-size: 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
+  }
+
+  .student__courses,
+  .student__teacher {
+    display: block;
+  }
 }

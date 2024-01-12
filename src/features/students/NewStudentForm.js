@@ -341,7 +341,7 @@ const NewStudentForm = ({ teachers }) => {
 
         <div className="button__container">
           <div className="form__button">
-            <button disabled={!canSave}>Add User</button>
+            <button disabled={!canSave}>Add Student</button>
           </div>
         </div>
       </form>

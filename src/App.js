@@ -11,6 +11,7 @@ import NewStudent from "./features/students/NewStudent";
 import NewResult from "./features/results/NewResult";
 import EditResult from "./features/results/EditResult";
 import EditStudent from "./features/students/EditStudent";
+import EditUser from "./features/users/EditUser";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="users">
             <Route index element={<UsersList />} />
             <Route path="new" element={<NewUserForm />} />
+            <Route path=":id" element={<EditUser />} />
           </Route>
 
           <Route path="students">

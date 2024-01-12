@@ -41,10 +41,22 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (result, error, arg) => [{ type: "User", id: "LIST" }],
     }),
+    updateUser: builder.mutation({
+      query: (initialData) => ({
+        url: "/users",
+        method: "PATCH",
+        body: { ...initialData },
+        invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+      }),
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useCreateNewUserMutation } = usersApiSlice;
+export const {
+  useGetUsersQuery,
+  useCreateNewUserMutation,
+  useUpdateUserMutation,
+} = usersApiSlice;
 
 // select all gotten users
 export const selectUsersResult = usersApiSlice.endpoints.getUsers.select();

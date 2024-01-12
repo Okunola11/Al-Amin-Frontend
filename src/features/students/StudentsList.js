@@ -27,25 +27,25 @@ const StudentsList = () => {
       : null;
 
     content = (
-      <table className="table--students">
+      <table className="table table--students">
         <thead className="table__thead">
           <tr>
-            <th scope="col" className="table__th">
+            <th scope="col" className="table__th student__name">
               Name
             </th>
-            <th scope="col" className="table__th">
+            <th scope="col" className="table__th student__id">
               Student ID
             </th>
-            <th scope="col" className="table__th">
+            <th scope="col" className="table__th student__class">
               Class
             </th>
-            <th scope="col" className="table__th">
+            <th scope="col" className="table__th student__courses">
               Courses
             </th>
-            <th scope="col" className="table__th">
+            <th scope="col" className="table__th student__teacher">
               Class Teacher
             </th>
-            <th scope="col" className="table__th">
+            <th scope="col" className="table__th student__edit">
               Edit
             </th>
           </tr>

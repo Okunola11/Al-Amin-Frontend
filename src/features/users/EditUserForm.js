@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ROLES } from "../../config/roles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,7 +6,7 @@ import {
   faCheck,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { useCreateNewUserMutation } from "./usersApiSlice";
+import { useUpdateUserMutation } from "./usersApiSlice";
 import { useNavigate } from "react-router-dom";
 
 const username_REGEX = /^(?=(?:\S*\s?\S*){2,3}$)[a-zA-Z\s]{10,25}$/;
@@ -14,35 +14,27 @@ const userId_REGEX = /^[a-zA-Z0-9]{4}[/][a-zA-Z0-9-_]{3,7}$/;
 const password_REGEX =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{4,23}$/;
 
-const NewUserForm = () => {
-  const [createNewUser, { isLoading, isSuccess, isError, error }] =
-    useCreateNewUserMutation();
+const EditUserForm = ({ user }) => {
+  const [updateUser, { isLoading, isSuccess, isError, error }] =
+    useUpdateUserMutation();
 
   const navigate = useNavigate();
 
-  const usernameRef = useRef();
-
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(user.username);
   const [validUsername, setValidUsername] = useState(false);
-  const [usernameFocus, setUsernameFocus] = useState(false);
 
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState(user.usernum);
   const [validUserId, setValidUserId] = useState(false);
-  const [userIdFocus, setUserIdFocus] = useState(false);
 
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(false);
-  const [passwordFocus, setPasswordFocus] = useState(false);
 
   const [matchPassword, setMatchPassword] = useState("");
   const [validMatchPassword, setValidMatchPassword] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
 
-  const [roles, setRoles] = useState(["Employee"]);
+  const [roles, setRoles] = useState(user.roles);
 
-  useEffect(() => {
-    usernameRef.current.focus();
-  }, []);
+  const [active, setActive] = useState(user.active);
 
   useEffect(() => {
     const validUser = username_REGEX.test(username);
@@ -75,6 +67,7 @@ const NewUserForm = () => {
   const onPasswordChange = (e) => setPassword(e.target.value);
   const onMatchChange = (e) => setMatchPassword(e.target.value);
   const onUserIdChange = (e) => setUserId(e.target.value);
+  const onActiveChange = (e) => setActive((prev) => !prev);
 
   const rolesOption = Object.values(ROLES).map((role) => (
     <option key={role} value={role}>
@@ -89,21 +82,25 @@ const NewUserForm = () => {
   };
 
   const canSave =
-    [validUsername, validUserId, password, matchPassword, roles.length].every(
-      Boolean
-    ) && !isLoading;
+    [validUsername, validUserId, roles.length].every(Boolean) && !isLoading;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createNewUser({ username, usernum: userId, password, roles });
+    await updateUser({
+      id: user.id,
+      username,
+      usernum: userId,
+      password,
+      roles,
+      active,
+    });
   };
-
   const content = (
     <section className="newUser">
       <p className={isError ? "errmsg" : "offscreen"}>{error?.data.message}</p>
 
       <form className="form" onSubmit={handleSubmit}>
-        <h2>Add New Employee</h2>
+        <h2>Edit Employee</h2>
 
         <label className="form__label" htmlFor="username" aria-live="assertive">
           Employee Name
@@ -118,20 +115,13 @@ const NewUserForm = () => {
           className="form__input"
           type="text"
           id="username"
-          ref={usernameRef}
           value={username}
           onChange={onUsernameChange}
           required
           autoComplete="off"
-          onFocus={() => setUsernameFocus(true)}
-          onBlur={() => setUsernameFocus(false)}
         />
         <p
-          className={
-            usernameFocus && username && !validUsername
-              ? "instructions"
-              : "offscreen"
-          }
+          className={username && !validUsername ? "instructions" : "offscreen"}
         >
           <FontAwesomeIcon icon={faInfoCircle} /> <br />
           10 to 25 characters.
@@ -159,14 +149,8 @@ const NewUserForm = () => {
           onChange={onUserIdChange}
           required
           autoComplete="off"
-          onFocus={() => setUserIdFocus(true)}
-          onBlur={() => setUserIdFocus(false)}
         />
-        <p
-          className={
-            userIdFocus && userId && !validUserId ? "instructions" : "offscreen"
-          }
-        >
+        <p className={userId && !validUserId ? "instructions" : "offscreen"}>
           <FontAwesomeIcon icon={faInfoCircle} /> <br />
           8 to 12 characters.
           <br />
@@ -191,14 +175,9 @@ const NewUserForm = () => {
           id="password"
           value={password}
           onChange={onPasswordChange}
-          required
-          onFocus={() => setPasswordFocus(true)}
-          onBlur={() => setPasswordFocus(false)}
         />
         <p
-          className={
-            passwordFocus && !validPassword ? "instructions" : "offscreen"
-          }
+          className={!validPassword && password ? "instructions" : "offscreen"}
         >
           <FontAwesomeIcon icon={faInfoCircle} /> <br />
           8 to 23 characters <br />
@@ -230,20 +209,26 @@ const NewUserForm = () => {
           id="matchPassword"
           value={matchPassword}
           onChange={onMatchChange}
-          required
-          onFocus={() => setMatchFocus(true)}
-          onBlur={() => setMatchFocus(false)}
         />
         <p
           className={
-            validPassword && matchFocus && !validMatchPassword
-              ? "instructions"
-              : "offscreen"
+            validPassword && !validMatchPassword ? "instructions" : "offscreen"
           }
         >
           <FontAwesomeIcon icon={faInfoCircle} /> <br />
           Must be the same as Password
         </p>
+
+        <label className="form__active" htmlFor="active" aria-live="assertive">
+          Active
+          <input
+            className="form__active--button"
+            type="checkbox"
+            id="active"
+            checked={active}
+            onChange={onActiveChange}
+          />
+        </label>
 
         <label
           className="form__roles form__label"
@@ -265,13 +250,12 @@ const NewUserForm = () => {
         </select>
         <div className="button__container">
           <div className="form__button">
-            <button disabled={!canSave}>Add Employee</button>
+            <button disabled={!canSave}>Update Employee</button>
           </div>
         </div>
       </form>
     </section>
   );
-
   return content;
 };
-export default NewUserForm;
+export default EditUserForm;
