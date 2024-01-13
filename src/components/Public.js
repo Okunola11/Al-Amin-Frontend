@@ -29,7 +29,7 @@ const Public = () => {
           <Link to="/login">Employee Login</Link>
         </p>
         <p>
-          <Link>Student Login</Link>
+          <Link to="/login/student">Student Login</Link>
         </p>
       </footer>
     </section>

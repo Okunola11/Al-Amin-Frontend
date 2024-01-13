@@ -13,6 +13,7 @@ import EditResult from "./features/results/EditResult";
 import EditStudent from "./features/students/EditStudent";
 import EditUser from "./features/users/EditUser";
 import UsersLogin from "./features/auth/UsersLogin";
+import StudentLogin from "./features/auth/StudentLogin";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route index element={<Public />} />
         <Route path="login">
           <Route index element={<UsersLogin />} />
+          <Route path="student" element={<StudentLogin />} />
         </Route>
 
         {/*Protected Routes*/}

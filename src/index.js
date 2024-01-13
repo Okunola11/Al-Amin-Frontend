@@ -10,9 +10,9 @@ import { usersApiSlice } from "./features/users/usersApiSlice";
 import { studentsApiSlice } from "./features/students/studentsApiSlice";
 import { resultsApiSlice } from "./features/results/resultsApiSlice";
 
-//store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
-//store.dispatch(studentsApiSlice.endpoints.getStudents.initiate());
-//store.dispatch(resultsApiSlice.endpoints.getResults.initiate());
+store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
+store.dispatch(studentsApiSlice.endpoints.getStudents.initiate());
+store.dispatch(resultsApiSlice.endpoints.getResults.initiate());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
