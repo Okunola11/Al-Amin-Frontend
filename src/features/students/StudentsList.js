@@ -14,7 +14,7 @@ const StudentsList = () => {
   if (isLoading) content = <p>Loading</p>;
 
   if (isError) {
-    content = <p className="errmsg">{error}</p>;
+    content = <p className="errmsg">{error?.data?.message}</p>;
   }
 
   if (isSuccess) {
