@@ -12,12 +12,16 @@ import NewResult from "./features/results/NewResult";
 import EditResult from "./features/results/EditResult";
 import EditStudent from "./features/students/EditStudent";
 import EditUser from "./features/users/EditUser";
+import UsersLogin from "./features/auth/UsersLogin";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Public />} />
+        <Route path="login">
+          <Route index element={<UsersLogin />} />
+        </Route>
 
         {/*Protected Routes*/}
         <Route path="dash" element={<DashLayout />}>
