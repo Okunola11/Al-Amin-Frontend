@@ -47,7 +47,7 @@ const PersistLogin = () => {
     content = (
       <p className="errmsg">
         {`${error?.data?.message} - `}
-        <Link to="/public">Please login again</Link>
+        <Link to="/">Please login again</Link>
       </p>
     );
   } else if (isSuccess && success) {

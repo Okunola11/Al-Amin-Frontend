@@ -137,6 +137,19 @@ a:focus {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
+.dash-header__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dash-header__nav {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5em;
+}
+
 .dash-container {
   flex-grow: 1;
   padding: 0.75em 0.5em 0.5em;
@@ -152,6 +165,22 @@ a:focus {
   gap: 1em;
   padding: 0.5em;
   border-top: 1px solid var(--BORDER-COLOR);
+}
+
+.icon-button {
+  min-width: 40px;
+  height: 40px;
+  margin: 0.1rem 0;
+  margin-right: 0.5rem;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+  transform: scale(1.2);
+}
+
+.icon-button[disabled] {
+  visibility: hidden;
 }
 
 /* || TABLES-GENERAL*/
@@ -566,7 +595,7 @@ tr {
 .student__main {
   display: flex;
   background-color: #fff;
-  color: #555;
+  color: #333;
   height: 100vh;
   padding: 5px;
 }

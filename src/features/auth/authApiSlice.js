@@ -1,5 +1,5 @@
 import { apiSlice } from "../../app/api/apiSlice";
-import { setCredentials } from "./authSlice";
+import { setCredentials, logOut } from "./authSlice";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -33,6 +33,24 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+    sendLogout: builder.mutation({
+      query: () => ({
+        url: "/auth/logout",
+        method: "POST",
+      }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          console.log(data);
+          setTimeout(() => {
+            dispatch(logOut());
+            dispatch(apiSlice.util.resetApiState());
+          }, 1000);
+        } catch (err) {
+          console.error(err);
+        }
+      },
+    }),
   }),
 });
 
@@ -40,4 +58,5 @@ export const {
   useUserLoginMutation,
   useStudentLoginMutation,
   useRefreshMutation,
+  useSendLogoutMutation,
 } = authApiSlice;
