@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { selectStudentsIds } from "../students/studentsApiSlice";
 import { useGetStudentsQuery } from "../students/studentsApiSlice";
-import { useSelector } from "react-redux";
 
 const StudentWelcome = () => {
   const { usernum, username } = useAuth();
