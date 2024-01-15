@@ -141,10 +141,10 @@ const NewStudentForm = ({ teachers }) => {
       <p className={isError ? "errmsg" : "offscreen"}>{error?.data.message}</p>
 
       <form className="form" onSubmit={handleSubmit}>
-        <h2>Add New Employee</h2>
+        <h2>Add New Student</h2>
 
         <label className="form__label" htmlFor="username" aria-live="assertive">
-          Employee Name
+          Student Name
           <span className={validUsername ? "valid" : "hide"}>
             {<FontAwesomeIcon icon={faCheck} />}
           </span>
@@ -181,7 +181,7 @@ const NewStudentForm = ({ teachers }) => {
         </p>
 
         <label className="form__label" htmlFor="userId" aria-live="assertive">
-          Employee ID
+          Student ID
           <span className={validUserId ? "valid" : "hide"}>
             {<FontAwesomeIcon icon={faCheck} />}
           </span>
