@@ -16,6 +16,7 @@ import UsersLogin from "./features/auth/UsersLogin";
 import StudentLogin from "./features/auth/StudentLogin";
 import StudentWelcome from "./features/studentPage/StudentWelcome";
 import StudentResult from "./features/studentPage/StudentResult";
+import PersistLogin from "./features/auth/PersistLogin";
 
 function App() {
   return (
@@ -28,30 +29,32 @@ function App() {
         </Route>
 
         {/*Protected Routes*/}
-        <Route path="dash" element={<DashLayout />}>
-          <Route index element={<Welcome />} />
+        <Route element={<PersistLogin />}>
+          <Route path="dash" element={<DashLayout />}>
+            <Route index element={<Welcome />} />
 
-          <Route path="student">
-            <Route index element={<StudentWelcome />} />
-            <Route path="result" element={<StudentResult />} />
-          </Route>
+            <Route path="student">
+              <Route index element={<StudentWelcome />} />
+              <Route path="result" element={<StudentResult />} />
+            </Route>
 
-          <Route path="users">
-            <Route index element={<UsersList />} />
-            <Route path="new" element={<NewUserForm />} />
-            <Route path=":id" element={<EditUser />} />
-          </Route>
+            <Route path="users">
+              <Route index element={<UsersList />} />
+              <Route path="new" element={<NewUserForm />} />
+              <Route path=":id" element={<EditUser />} />
+            </Route>
 
-          <Route path="students">
-            <Route index element={<StudentsList />} />
-            <Route path="new" element={<NewStudent />} />
-            <Route path=":id" element={<EditStudent />} />
-          </Route>
+            <Route path="students">
+              <Route index element={<StudentsList />} />
+              <Route path="new" element={<NewStudent />} />
+              <Route path=":id" element={<EditStudent />} />
+            </Route>
 
-          <Route path="results">
-            <Route index element={<ResultsList />} />
-            <Route path="new" element={<NewResult />} />
-            <Route path=":id" element={<EditResult />} />
+            <Route path="results">
+              <Route index element={<ResultsList />} />
+              <Route path="new" element={<NewResult />} />
+              <Route path=":id" element={<EditResult />} />
+            </Route>
           </Route>
         </Route>
       </Route>

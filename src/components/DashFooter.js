@@ -10,7 +10,7 @@ const DashFooter = () => {
       ) : (
         <Link to="/dash">Home</Link>
       )}
-      <p>Current User: {usernum}</p>
+      <p>Current user: {usernum}</p>
       <p>Status: {status}</p>
     </footer>
   );
