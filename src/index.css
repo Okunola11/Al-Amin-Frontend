@@ -552,6 +552,16 @@ tr {
   background-color: #0056b3;
 }
 
+.login__active {
+  display: flex;
+  justify-content: flex-start;
+
+  input {
+    width: 24px;
+    margin-left: 0.5em;
+  }
+}
+
 /* || STUDENTS INDIVIDUAL PAGE*/
 .student__main {
   display: flex;
