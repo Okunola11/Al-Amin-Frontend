@@ -14,6 +14,8 @@ import EditStudent from "./features/students/EditStudent";
 import EditUser from "./features/users/EditUser";
 import UsersLogin from "./features/auth/UsersLogin";
 import StudentLogin from "./features/auth/StudentLogin";
+import StudentWelcome from "./features/studentPage/StudentWelcome";
+import StudentResult from "./features/studentPage/StudentResult";
 
 function App() {
   return (
@@ -28,6 +30,11 @@ function App() {
         {/*Protected Routes*/}
         <Route path="dash" element={<DashLayout />}>
           <Route index element={<Welcome />} />
+
+          <Route path="student">
+            <Route index element={<StudentWelcome />} />
+            <Route path="result" element={<StudentResult />} />
+          </Route>
 
           <Route path="users">
             <Route index element={<UsersList />} />

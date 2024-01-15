@@ -552,6 +552,93 @@ tr {
   background-color: #0056b3;
 }
 
+/* || STUDENTS INDIVIDUAL PAGE*/
+.student__main {
+  display: flex;
+  background-color: #fff;
+  color: #555;
+  height: 100vh;
+  padding: 5px;
+}
+
+.student__section1 {
+  display: none;
+}
+
+.student__section2 {
+  flex-grow: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.student-container {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.student-info {
+  margin-top: 20px;
+  border: 1px solid #555;
+}
+
+.student-data__top {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.student-data {
+  border-top: 1px solid #555;
+  padding: 10px;
+}
+
+.nav-data {
+  max-width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-heading {
+  border: none;
+  background-color: #555;
+  color: var(--BORDER-COLOR);
+}
+
+.nav--h3 {
+  margin-bottom: 0.1em;
+  padding: 5px;
+}
+
+.nav-link a,
+.nav-link a:visited {
+  color: #555;
+}
+
+.nav-link a:hover {
+  color: red;
+}
+
+.result-link a {
+  color: #002c61;
+}
+
+.result-link {
+  margin-top: 1rem;
+}
+
+.report-p {
+  background-color: #333;
+  color: var(--LINK-COLOR);
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.report-name {
+  font-weight: bold;
+}
+
 @media screen and (max-width: 400px) {
   h1 {
     font-size: 2rem;
@@ -575,5 +662,13 @@ tr {
   .student__courses,
   .student__teacher {
     display: block;
+  }
+
+  .student__section1 {
+    display: block;
+  }
+
+  .result-link {
+    display: none;
   }
 }

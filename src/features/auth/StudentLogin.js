@@ -43,7 +43,7 @@ const StudentLogin = () => {
 
       setUsernum("");
       setPassword("");
-      navigate("/dash");
+      navigate(`/dash/student`);
     } catch (err) {
       if (!err.status) {
         console.error(err);
