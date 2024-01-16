@@ -1,7 +1,10 @@
 import { useGetResultsQuery } from "./resultsApiSlice";
 import Result from "./Result";
+import useAuth from "../../hooks/useAuth";
 
 const ResultsList = () => {
+  const { usernum, isAdmin, isExecutive } = useAuth();
+
   const {
     data: results,
     isLoading,
@@ -18,10 +21,19 @@ const ResultsList = () => {
   }
 
   if (isSuccess) {
-    const { ids } = results;
+    const { ids, entities } = results;
 
-    const tableData = ids?.length
-      ? ids.map((resultId) => <Result key={resultId} resultId={resultId} />)
+    let filteredIds;
+    if (isAdmin || isExecutive) {
+      filteredIds = [...ids];
+    } else {
+      filteredIds = ids.filter((id) => entities[id].teachernum === usernum);
+    }
+
+    const tableData = filteredIds?.length
+      ? filteredIds.map((resultId) => (
+          <Result key={resultId} resultId={resultId} />
+        ))
       : null;
 
     content = <main>{tableData}</main>;

@@ -1,7 +1,10 @@
 import { useGetStudentsQuery } from "./studentsApiSlice";
 import Student from "./Student";
+import useAuth from "../../hooks/useAuth";
 
 const StudentsList = () => {
+  const { usernum, isAdmin, isExecutive } = useAuth();
+
   const {
     data: students,
     isLoading,
@@ -18,10 +21,17 @@ const StudentsList = () => {
   }
 
   if (isSuccess) {
-    const { ids } = students;
+    const { ids, entities } = students;
 
-    const tableData = ids?.length
-      ? ids.map((studentId) => (
+    let filteredIds;
+    if (isAdmin || isExecutive) {
+      filteredIds = [...ids];
+    } else {
+      filteredIds = ids.filter((id) => entities[id].teachernum === usernum);
+    }
+
+    const tableData = filteredIds?.length
+      ? filteredIds.map((studentId) => (
           <Student key={studentId} studentId={studentId} />
         ))
       : null;
