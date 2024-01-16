@@ -14,7 +14,6 @@ export const resultsApiSlice = apiSlice.injectEndpoints({
           return response.status === 200 && !result.isError;
         },
       }),
-      keepUnusedDataFor: 5,
       transformResponse: (responseData) => {
         const loadedData = responseData.map((result) => {
           result.id = result._id;

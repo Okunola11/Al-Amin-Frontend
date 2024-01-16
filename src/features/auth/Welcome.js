@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Welcome = () => {
+  const { isAdmin, isExecutive } = useAuth();
+
   const date = new Date();
   const today = new Intl.DateTimeFormat("en-us", {
     dateStyle: "full",
@@ -13,21 +16,31 @@ const Welcome = () => {
       <p>
         <Link to="/dash/students">View students</Link>
       </p>
-      <p>
-        <Link to="/dash/students/new">Add a new Student</Link>
-      </p>
+      {(isAdmin || isExecutive) && (
+        <p>
+          <Link to="/dash/students/new">Add a new Student</Link>
+        </p>
+      )}
+
       <p>
         <Link to="/dash/results">View Results</Link>
       </p>
+
       <p>
         <Link to="/dash/results/new">Add results</Link>
       </p>
-      <p>
-        <Link to="/dash/users">View Employees</Link>
-      </p>
-      <p>
-        <Link to="/dash/users/new">Add a new Employee</Link>
-      </p>
+
+      {(isAdmin || isExecutive) && (
+        <p>
+          <Link to="/dash/users">View Employees</Link>
+        </p>
+      )}
+
+      {(isAdmin || isExecutive) && (
+        <p>
+          <Link to="/dash/users/new">Add a new Employee</Link>
+        </p>
+      )}
     </section>
   );
 };

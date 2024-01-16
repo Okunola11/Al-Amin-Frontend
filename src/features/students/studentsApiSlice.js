@@ -14,7 +14,6 @@ export const studentsApiSlice = apiSlice.injectEndpoints({
           return response.status === 200 && !result.isError;
         },
       }),
-      keepUnusedDataFor: 5,
       transformResponse: (responseData) => {
         const loadedData = responseData.map((student) => {
           student.id = student._id;
