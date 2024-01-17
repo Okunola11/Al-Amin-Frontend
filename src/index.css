@@ -860,6 +860,22 @@ a:focus {
   line-height: 1.6;
 }
 
+/* || ADMISSIONS SECTION || ADMISSIONS  SECTION*/
+
+.public-admissions {
+  background-color: #e9ecef;
+  color: var(--HEADING);
+  padding: 50px 20px;
+}
+
+/* || CONTACT SECTION || CONTACT  SECTION*/
+
+.public-contact {
+  background-color: #007bff;
+  color: #fff;
+  padding: 50px 20px;
+}
+
 /* \\\\\\|||||||||||||||||\\\\\\\\\\\|||||||||||||||||||||||||||||||*/
 
 /* || MEDIA QUERIES || MEDIA QUERIES*/
