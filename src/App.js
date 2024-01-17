@@ -20,12 +20,14 @@ import PersistLogin from "./features/auth/PersistLogin";
 import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 import PreFetch from "./features/auth/PreFetch";
+import PublicLayout from "./components/publicPage/PublicLayout";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Public />} />
+        <Route path="public" element={<PublicLayout />} />
         <Route path="login">
           <Route index element={<UsersLogin />} />
           <Route path="student" element={<StudentLogin />} />

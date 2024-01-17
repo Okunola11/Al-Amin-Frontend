@@ -22,7 +22,7 @@ const Public = () => {
           <a href="tel: +2345555555555">(555) 555-5555</a>
         </address>
         <br />
-        <p>Owner: Chun Lee</p>
+        <p>Motto: In Allah we Trust</p>
       </main>
       <footer className="public__footer">
         <p>
