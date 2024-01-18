@@ -16,7 +16,7 @@ const PublicHeader = () => {
           <div className="nav-icon"></div>
         </button>
       </section>
-      <nav>
+      <nav className="public-nav">
         <ul>
           <li>
             <a href="#home">Home</a>
@@ -34,7 +34,7 @@ const PublicHeader = () => {
             <a href="#contact">Contact</a>
           </li>
           <li className="has-subnav">
-            <a href="#contact">Login Portal</a>
+            <a href="#home">Login Portal</a>
             <ul className="subnav">
               <li>
                 <Link to="/login">Employee</Link>
