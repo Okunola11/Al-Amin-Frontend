@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { useUpdateResultMutation } from "./resultsApiSlice";
 import { useDeleteResultMutation } from "./resultsApiSlice";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const EditResultForm = ({ result }) => {
+  const { isAdmin, isExecutive } = useAuth();
+
   const navigate = useNavigate();
 
   const [updateResult, { isLoading, isSuccess, isError, error }] =
@@ -91,13 +94,15 @@ const EditResultForm = ({ result }) => {
         >
           Submit
         </button>
-        <button
-          type="button"
-          onClick={handleDelete}
-          className="newResult__button--delete"
-        >
-          Delete Result
-        </button>
+        {(isAdmin || isExecutive) && (
+          <button
+            type="button"
+            onClick={handleDelete}
+            className="newResult__button--delete"
+          >
+            Delete Result
+          </button>
+        )}
       </form>
     </section>
   );

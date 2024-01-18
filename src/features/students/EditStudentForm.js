@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { CLASS } from "../../config/class";
 import { SUBJECTS } from "../../config/subjects";
+import { useUpdateStudentMutation } from "./studentsApiSlice";
+import { useDeleteStudentMutation } from "./studentsApiSlice";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
   faCheck,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { useUpdateStudentMutation } from "./studentsApiSlice";
-import { useDeleteStudentMutation } from "./studentsApiSlice";
-import { useNavigate } from "react-router-dom";
 
 const username_REGEX = /^(?=(?:\S*\s?\S*){2,3}$)[a-zA-Z\s]{10,25}$/;
 const userId_REGEX = /^[a-zA-Z0-9]{4}[/][a-zA-Z0-9-_]{3,7}$/;
@@ -17,6 +18,8 @@ const password_REGEX =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{4,23}$/;
 
 const EditStudentForm = ({ student, teachers }) => {
+  const { isAdmin, isExecutive } = useAuth();
+
   const [updateResult, { isLoading, isSuccess, isError, error }] =
     useUpdateStudentMutation();
 
@@ -314,9 +317,11 @@ const EditStudentForm = ({ student, teachers }) => {
 
         <div className="button__container">
           <button disabled={!canSave}>Edit Student</button>
-          <button className="form__button--delete" onClick={handleDelete}>
-            Delete Student
-          </button>
+          {(isAdmin || isExecutive) && (
+            <button className="form__button--delete" onClick={handleDelete}>
+              Delete Student
+            </button>
+          )}
         </div>
       </form>
     </section>
