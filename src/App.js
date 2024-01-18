@@ -21,8 +21,11 @@ import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 import PreFetch from "./features/auth/PreFetch";
 import PublicLayout from "./components/publicPage/PublicLayout";
+import useTitle from "./hooks/useTitle";
 
 function App() {
+  useTitle("Al Amin Schools");
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

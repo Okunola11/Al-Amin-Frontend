@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useGetStudentsQuery } from "../students/studentsApiSlice";
+import useTitle from "../../hooks/useTitle";
 
 const StudentWelcome = () => {
+  useTitle("Al Amin: Student Portal");
+
   const { usernum, username } = useAuth();
 
   const {

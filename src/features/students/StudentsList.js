@@ -1,8 +1,11 @@
 import { useGetStudentsQuery } from "./studentsApiSlice";
 import Student from "./Student";
 import useAuth from "../../hooks/useAuth";
+import useTitle from "../../hooks/useTitle";
 
 const StudentsList = () => {
+  useTitle("Al Amin: Students List");
+
   const { usernum, isAdmin, isExecutive } = useAuth();
 
   const {

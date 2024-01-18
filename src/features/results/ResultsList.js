@@ -1,8 +1,11 @@
 import { useGetResultsQuery } from "./resultsApiSlice";
 import Result from "./Result";
 import useAuth from "../../hooks/useAuth";
+import useTitle from "../../hooks/useTitle";
 
 const ResultsList = () => {
+  useTitle("Al Amin: Results List");
+
   const { usernum, isAdmin, isExecutive } = useAuth();
 
   const {
