@@ -116,11 +116,11 @@ a:focus {
   margin-top: 1em;
 }
 
-.public__footer {
+/* .public__footer {
   display: flex;
   justify-content: flex-start;
   gap: 1em;
-}
+} */
 
 .welcome a::before {
   content: "➜";
@@ -698,6 +698,13 @@ tr {
   align-items: center;
 }
 
+.public__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
 .nav-button {
   background-color: transparent;
   border: none;
@@ -781,7 +788,7 @@ nav ul {
 
 nav li {
   padding: 0.5rem;
-  border-top: 1px solid var(--HEADING);
+  border-top: 1px solid var(--BORDER-COLOR);
 }
 
 nav a {
@@ -797,6 +804,27 @@ nav a:hover,
 a:focus {
   transform: scale(1.2);
   transition: all 0.3s;
+}
+
+.subnav {
+  text-align: center;
+  display: none;
+}
+
+.has-subnav:hover .subnav {
+  display: block;
+  transform-origin: top center;
+
+  animation: showNav 0.5s ease-in-out forwards;
+}
+
+.subnav li {
+  margin: auto;
+}
+
+.subnav li:hover,
+li:focus {
+  background-color: var(--VALID);
 }
 
 /* || HERO SECTION || HERO SECTION*/
@@ -868,12 +896,47 @@ a:focus {
   padding: 50px 20px;
 }
 
+.admissions-div {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.admissions-list ul {
+  list-style: none;
+}
+
+.admissions-list {
+  border: 1px solid var(--HEADING);
+  padding: 1em;
+  width: 200px;
+  border-radius: 10px;
+  background-color: var(--BGCOLOR);
+  color: var(--COLOR);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
 /* || CONTACT SECTION || CONTACT  SECTION*/
 
 .public-contact {
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--INACTIVE);
+  color: var(--HEADING);
   padding: 50px 20px;
+}
+
+.public-contact a {
+  color: #4285f4;
+}
+
+.public__footer {
+  position: sticky;
+  bottom: 0;
+}
+
+.about-footer {
+  text-align: center;
+  background-color: var(--HEADING);
 }
 
 /* \\\\\\|||||||||||||||||\\\\\\\\\\\|||||||||||||||||||||||||||||||*/

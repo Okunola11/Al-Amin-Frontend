@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import school_logo from "../../img/school_logo.jpg";
 
 const PublicHeader = () => {
   return (
-    <header>
+    <header className="public__header">
       <section className="public-header">
         <div className="logo">
           <img src={school_logo} alt="School logo" />
@@ -24,7 +25,24 @@ const PublicHeader = () => {
             <a href="#about">About</a>
           </li>
           <li>
+            <a href="#admissions">Admissions</a>
+          </li>
+          <li>
+            <a href="#programs">Program</a>
+          </li>
+          <li>
             <a href="#contact">Contact</a>
+          </li>
+          <li className="has-subnav">
+            <a href="#contact">Login Portal</a>
+            <ul className="subnav">
+              <li>
+                <Link to="/login">Employee</Link>
+              </li>
+              <li>
+                <Link to="/login/student">Student</Link>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
