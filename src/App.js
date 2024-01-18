@@ -26,8 +26,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Public />} />
-        <Route path="public" element={<PublicLayout />} />
+        <Route index element={<PublicLayout />} />
+        <Route path="public" element={<Public />} />
         <Route path="login">
           <Route index element={<UsersLogin />} />
           <Route path="student" element={<StudentLogin />} />
