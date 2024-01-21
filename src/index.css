@@ -971,7 +971,9 @@ li:focus {
 
 .admissions-div {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 1rem;
   gap: 1rem;
 }
@@ -988,6 +990,38 @@ li:focus {
   background-color: var(--BGCOLOR);
   color: var(--COLOR);
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* || PROGRAMS SECTION || PROGRAMS  SECTION*/
+
+.public-programs__ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.public-programs__li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 68.7%;
+  height: 350px;
+  border: 1px solid var(--HEADING);
+  border-radius: 1.5rem;
+  padding: 1.5rem 0;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.public-programs__h3 {
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.55rem;
+  color: rgb(15 23 43);
+  margin-top: 1rem;
 }
 
 /* || CONTACT SECTION || CONTACT  SECTION*/
@@ -1022,6 +1056,23 @@ li:focus {
 
   nav ul {
     display: none;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .public-programs__ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5rem;
+  }
+
+  .public-programs__li {
+    width: 33.33%;
+  }
+
+  .admissions-div {
+    flex-direction: row;
+    gap: 2rem;
   }
 }
 
