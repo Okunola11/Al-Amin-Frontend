@@ -1,6 +1,6 @@
 const PublicAdmission = () => {
   const content = (
-    <section id="admissions" className="public-admissions">
+    <section id="admissions" className="public-admissions public-section">
       <div className="about-container">
         <h2>Admissions</h2>
         <p>Enroll your child and be part of our learning community.</p>

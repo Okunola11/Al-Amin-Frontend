@@ -1,6 +1,6 @@
 const PublicHero = () => {
   const content = (
-    <section id="home" className="public-hero">
+    <section id="home" className="public-hero public-section">
       <div className="public-hero__content">
         <h2>
           Welcome to <span className="nowrap">Al Amin</span> School

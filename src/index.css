@@ -64,6 +64,10 @@ body {
   background-blend-mode: multiply;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 input,
 button,
 textarea,
@@ -76,7 +80,6 @@ select {
   display: flex;
   flex-direction: column;
   flex-flow: column nowrap;
-  scroll-behavior: smooth;
 }
 
 a {
@@ -693,6 +696,12 @@ tr {
   justify-content: space-between;
   align-items: center;
   padding: 0 0.5em;
+  font-size: 1rem;
+}
+
+.public-header__section h1 {
+  font-size: 1.85rem;
+  line-height: 2.25rem;
 }
 
 .public__header {
@@ -872,11 +881,19 @@ li:focus {
   .public-header__name p {
     display: block;
   }
+
+  .public-section {
+    min-height: calc(100vh - 38px);
+  }
 }
 
 @media screen and (max-aspect-ratio: 13/20) {
   .public-header__name p {
     display: block;
+  }
+
+  .public-section {
+    min-height: calc(100vh - 66px);
   }
 }
 
@@ -887,6 +904,7 @@ li:focus {
   color: var(--HEADING);
   text-align: center;
   padding: 80px 20px;
+  scroll-margin-top: 10rem;
 }
 
 .public-hero__content h2 {
@@ -923,6 +941,7 @@ li:focus {
   background-color: #f8f9fa;
   color: var(--HEADING);
   padding: 50px 20px;
+  scroll-margin-top: 1rem;
 }
 
 .about-container {
@@ -947,6 +966,7 @@ li:focus {
   background-color: #e9ecef;
   color: var(--HEADING);
   padding: 50px 20px;
+  scroll-margin-top: 1rem;
 }
 
 .admissions-div {
@@ -976,6 +996,7 @@ li:focus {
   background-color: var(--INACTIVE);
   color: var(--HEADING);
   padding: 50px 20px;
+  scroll-margin-top: 1rem;
 }
 
 .public-contact a {
@@ -984,7 +1005,6 @@ li:focus {
 
 .public__footer {
   position: sticky;
-  bottom: 0;
 }
 
 .about-footer {

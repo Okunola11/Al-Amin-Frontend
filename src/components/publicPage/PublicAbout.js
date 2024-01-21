@@ -1,6 +1,6 @@
 const PublicAbout = () => {
   const content = (
-    <section id="about" className="public-about">
+    <section id="about" className="public-about public-section">
       <div className="about-container">
         <h2>About Our School</h2>
         <p>

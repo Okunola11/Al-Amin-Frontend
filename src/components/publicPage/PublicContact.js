@@ -1,6 +1,6 @@
 const PublicContact = () => {
   const content = (
-    <section id="contact" className="public-contact">
+    <section id="contact" className="public-contact public-section">
       <div className="about-container">
         <h2>Contact Us</h2>
         <p>Get in touch with us for any inquiries or assistance.</p>

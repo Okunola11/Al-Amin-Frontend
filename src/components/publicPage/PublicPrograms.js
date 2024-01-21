@@ -1,6 +1,6 @@
 const PublicPrograms = () => {
   const content = (
-    <section id="programs" className="public-about">
+    <section id="programs" className="public-about public-section">
       <div className="about-container">
         <h2>Programs</h2>
         <p>Explore our diverse range of educational programs.</p>
