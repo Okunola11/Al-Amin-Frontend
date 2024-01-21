@@ -1037,12 +1037,28 @@ li:focus {
   color: #4285f4;
 }
 
-.public__footer {
+/* || FOOTER SECTION || FOOTER  SECTION*/
+
+/* .public__footer {
   position: sticky;
+} */
+
+.public-footer__section {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 1rem;
+  background-color: var(--HEADING);
+  gap: 1rem;
+}
+
+.public-footer__div {
+  display: flex;
+  flex-direction: column;
 }
 
 .about-footer {
-  text-align: center;
+  text-align: right;
   background-color: var(--HEADING);
 }
 
@@ -1073,6 +1089,11 @@ li:focus {
   .admissions-div {
     flex-direction: row;
     gap: 2rem;
+  }
+
+  .public-footer__section {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
