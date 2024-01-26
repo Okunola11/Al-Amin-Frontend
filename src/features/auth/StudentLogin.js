@@ -73,15 +73,11 @@ const StudentLogin = () => {
           <h2>About Us</h2>
           <p>
             Welcome to Al Amin School, where excellence is not just a goal but a
-            way of life. At Al Amin, we pride ourselves on providing a holistic
-            educational experience that goes beyond the classroom. Our dedicated
-            faculty strives to inspire a passion for learning, nurturing the
-            intellectual and emotional growth of each student. With
-            state-of-the-art facilities, a vibrant extracurricular program, and
-            a commitment to fostering a supportive community, we create an
-            environment where students can thrive academically and personally.
-            Discover the best in education at Al Amin School, where every day is
-            an opportunity to learn, grow, and succeed.
+            way of life. As staffs and students of our prestigious school, it is
+            expected to always uphold the core values of the school at all time.
+            Remeber, once a bonafied student of{" "}
+            <span className="nowrap">Al Amin</span>, forever a champion. Happy
+            Learning!
           </p>
         </section>
 

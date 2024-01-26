@@ -496,7 +496,7 @@ tr {
   color: var(--INVALID);
 }
 
-/* || LOGIN PAGE*/
+/* || LOGIN PAGE || LOGIN PAGE || LOGIN PAGE*/
 
 .login__article {
   display: flex;
@@ -527,6 +527,10 @@ tr {
   color: #fff;
   border-radius: 0 50px 50px 0;
   box-shadow: 10px 0 0 rgba(0, 0, 0, 0.221);
+}
+
+.login__info p {
+  line-height: 1.5rem;
 }
 
 .login__login {
@@ -597,7 +601,7 @@ tr {
   }
 }
 
-/* || STUDENTS INDIVIDUAL PAGE*/
+/* || STUDENTS INDIVIDUAL PAGE || STUDENTS INDIVIDUAL PAGE*/
 .student__main {
   display: flex;
   background-color: #fff;
@@ -1094,6 +1098,11 @@ li:focus {
   .public-footer__section {
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .login__info p {
+    font-size: 1.75rem;
+    line-height: 2rem;
   }
 }
 
