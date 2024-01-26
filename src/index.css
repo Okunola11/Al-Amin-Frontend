@@ -291,6 +291,11 @@ tr {
   gap: 0.25em;
 }
 
+.form--public {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .form__label {
   margin-top: 10px;
 }
@@ -355,6 +360,10 @@ tr {
     width: 200px;
     display: grid;
     place-content: center;
+  }
+
+  button:hover {
+    background-color: rgb(76, 175, 10);
   }
 
   .form__button--delete {

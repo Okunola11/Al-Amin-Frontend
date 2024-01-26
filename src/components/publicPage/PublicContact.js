@@ -5,14 +5,33 @@ const PublicContact = () => {
         <h2>Contact Us</h2>
         <p>Get in touch with us for any inquiries or assistance.</p>
       </div>
-      <address className="public__addr">
-        Al Amin Schools
-        <br />
-        9A Adekunle Adebayo Close <br />
-        Dalemo, Alakuko, LG 12345 <br />
-        <a href="tel: +2345555555555">(234) 555-555-5555</a>
-        <p>Mail: alaminschools@gmail.com</p>
-      </address>
+      <form action="" className="form form--public">
+        <label htmlFor="subject" className="form__label">
+          Subject
+        </label>
+        <input
+          className="form__input"
+          type="text"
+          id="subject"
+          minLength="3"
+          maxLength="60"
+          placeholder="Your Subject"
+          required
+        />
+        <label htmlFor="message" className="form__label">
+          Message
+        </label>
+        <textarea
+          className="form__input"
+          name="message"
+          id=""
+          cols="30"
+          rows="10"
+          placeholder="Your Message"
+          required
+        ></textarea>
+        <button className="form__button">Submit</button>
+      </form>
     </section>
   );
 
