@@ -701,6 +701,10 @@ tr {
 
 /* || PUBLIC PAGE || PUBLIC PAGE*/
 
+.public-section {
+  min-height: calc(100vh - 38px);
+}
+
 .public-header__section {
   background-color: var(--HEADING);
   color: #fff;
@@ -894,30 +898,27 @@ li:focus {
   .public-header__name p {
     display: block;
   }
-
-  .public-section {
-    min-height: calc(100vh - 38px);
-  }
 }
 
 @media screen and (max-aspect-ratio: 13/20) {
   .public-header__name p {
     display: block;
   }
-
-  .public-section {
-    min-height: calc(100vh - 66px);
-  }
 }
 
 /* || HERO SECTION || HERO SECTION*/
 
 .public-hero {
-  background-color: var(--INACTIVE);
-  color: var(--HEADING);
+  background-color: #4a0404;
+  color: var(--BORDER-COLOR);
+  font-weight: 700;
   text-align: center;
   padding: 80px 20px;
   scroll-margin-top: 10rem;
+  background-image: url("img/islamic-knowledge.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
 }
 
 .public-hero__content h2 {
@@ -971,6 +972,10 @@ li:focus {
 .about-container p {
   font-size: 1.2rem;
   line-height: 1.6;
+}
+
+.about--p {
+  text-align: justify;
 }
 
 /* || ADMISSIONS SECTION || ADMISSIONS  SECTION*/

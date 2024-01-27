@@ -3,7 +3,7 @@ const PublicAbout = () => {
     <section id="about" className="public-about public-section">
       <div className="about-container">
         <h2>About Our School</h2>
-        <p>
+        <p className="about--p">
           Welcome to <span className="nowrap">Al Amin</span> School, where
           excellence is not just a goal but a way of life. At{" "}
           <span className="nowrap">Al Amin</span>, we pride ourselves on
