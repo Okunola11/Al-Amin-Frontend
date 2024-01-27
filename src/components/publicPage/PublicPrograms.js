@@ -8,7 +8,7 @@ import islam from "../../img/islamic-knowledge.jpeg";
 const PublicPrograms = () => {
   const content = (
     <section id="programs" className="public-about public-section">
-      <div className="about-container">
+      <div className="programs-container">
         <h2>Programs</h2>
         <p>Explore our diverse range of educational programs.</p>
         {/* Highlight different programs offered by the school */}

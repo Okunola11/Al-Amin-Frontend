@@ -349,6 +349,10 @@ tr {
   height: 24px;
 }
 
+.form__button {
+  margin-top: 6px;
+}
+
 .form {
   button {
     background-color: #4caf50;
@@ -1012,6 +1016,22 @@ li:focus {
 
 /* || PROGRAMS SECTION || PROGRAMS  SECTION*/
 
+.programs-container {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.programs-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.programs-container p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
 .public-programs__ul {
   list-style-type: none;
   display: flex;
@@ -1097,11 +1117,11 @@ li:focus {
   .public-programs__ul {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 5rem;
+    gap: 2rem;
   }
 
   .public-programs__li {
-    width: 33.33%;
+    width: 30.33%;
   }
 
   .admissions-div {
