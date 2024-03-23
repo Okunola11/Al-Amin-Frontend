@@ -69,12 +69,12 @@ const PublicHeader = () => {
               <a href="#contact">Contact</a>
             </li>
             <li className="has-subnav">
-              <a href="#home">Login</a>
-              <ul className="subnav">
-                <li>
+              <Link>Login</Link>
+              <ul className="subnav subnav--long">
+                <li className="subnav__li">
                   <Link to="/login">Employee</Link>
                 </li>
-                <li>
+                <li className="subnav__li">
                   <Link to="/login/student">Student</Link>
                 </li>
               </ul>

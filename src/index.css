@@ -58,7 +58,7 @@ body {
   min-height: 100vh;
   background-color: var(--BGCOLOR);
   color: var(--COLOR);
-  background-image: url(./img/background.jpg);
+  background-image: url(./img/background2.jpg);
   background-size: cover;
   background-position: top right;
   background-blend-mode: multiply;
@@ -139,7 +139,7 @@ a:focus {
   background-color: var(--HEADING);
   padding: 0 0.5em;
   border-bottom: 1px solid var(--BORDER-COLOR);
-  box-shadow: 0 5px 15px 0px rgba(245, 245, 245, 0.2);
+  box-shadow: 0 5px 15px 0px hsla(0, 0%, 0%, 0.1);
 }
 
 .dash-header__container {
@@ -800,6 +800,12 @@ tr {
   display: none;
 }
 
+.small-nav,
+.long-nav {
+  padding: 0;
+  margin: 0;
+}
+
 .long-nav ul {
   list-style: none;
   display: flex;
@@ -873,32 +879,26 @@ a:focus {
   position: relative;
 }
 
-.long-nav .subnav {
-  position: absolute;
-  /*  top: 44px; */
-  right: 0;
-  margin-left: 1rem;
-  background-color: var(--COLOR);
+.subnav {
+  background-color: rgb(119, 136, 153);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  min-width: max-content;
+  z-index: 999; /* Ensure the subnav appears on top of other elements */
 }
 
-.long-nav .subnav a {
-  color: var(--BGCOLOR);
+.subnav {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #0a3985;
 }
 
 .has-subnav:hover .subnav {
   display: block;
   transform-origin: top center;
-
   animation: showNav 0.5s ease-in-out forwards;
-}
-
-.subnav {
-  background-color: lightslategrey;
-}
-
-.subnav li:hover,
-li:focus {
-  background-color: var(--VALID);
 }
 
 @media screen and (min-width: 768px) {
@@ -912,6 +912,10 @@ li:focus {
 
   .public-header__section {
     padding: 0 1.5em 0 0.5em;
+  }
+
+  .subnav {
+    width: 120px;
   }
 }
 
@@ -1182,5 +1186,37 @@ li:focus {
 @media screen and (max-aspect-ratio: 13/20) {
   .public-header__name p {
     display: block;
+  }
+}
+
+/* || USER PREFERENCE*/
+@media (prefers-color-scheme: dark) {
+  .public-about,
+  .public-admissions,
+  .public-contact,
+  .public-programs {
+    background-color: #000;
+    color: #fff;
+    border-top: 1px solid #fff;
+  }
+
+  .public-programs__li {
+    color: var(--BORDER-COLOR);
+    border: 1px solid whitesmoke;
+    box-shadow: 5px 5px 10px 0px hsla(0, 0%, 96%, 0.1);
+  }
+
+  .public-programs__h3 {
+    color: var(--COLOR);
+  }
+
+  .admissions-list {
+    border: 1px solid whitesmoke;
+    padding: 1em;
+    width: 200px;
+    border-radius: 10px;
+    background-color: var(--BGCOLOR);
+    color: var(--COLOR);
+    box-shadow: 5px 5px 10px 0px hsla(0, 0%, 96%, 0.1);
   }
 }
