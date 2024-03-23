@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { selectResultsById } from "./resultsApiSlice";
 import { useParams } from "react-router-dom";
 import EditResultForm from "./EditResultForm";
+import { PulseLoader } from "react-spinners";
 
 const EditResult = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const EditResult = () => {
   const content = result ? (
     <EditResultForm result={studentResult} />
   ) : (
-    <p>Loading...</p>
+    <PulseLoader color={"#FFF"} />
   );
   return content;
 };

@@ -1,6 +1,7 @@
 import useAuth from "../../hooks/useAuth";
 import { useGetResultsQuery } from "../results/resultsApiSlice";
 import useTitle from "../../hooks/useTitle";
+import { PulseLoader } from "react-spinners";
 
 const StudentResult = () => {
   useTitle("Al Amin: Results Page");
@@ -16,7 +17,7 @@ const StudentResult = () => {
   } = useGetResultsQuery();
 
   let content;
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading) content = <PulseLoader color={"#FFF"} />;
 
   if (isError) content = <p>{error?.data?.message}</p>;
 

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { setCredentials } from "./authSlice";
 import { useUserLoginMutation } from "./authApiSlice";
 import usePersist from "../../hooks/usePersist";
+import { PulseLoader } from "react-spinners";
 
 const UsersLogin = () => {
   const dispatch = useDispatch();
@@ -140,7 +141,7 @@ const UsersLogin = () => {
     </article>
   );
 
-  return isLoading ? <p>Loading...</p> : content;
+  return isLoading ? <PulseLoader color={"#FFF"} /> : content;
 };
 
 export default UsersLogin;

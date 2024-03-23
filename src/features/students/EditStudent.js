@@ -3,6 +3,7 @@ import { selectStudentsById } from "./studentsApiSlice";
 import { selectAllUsers } from "../users/usersApiSlice";
 import EditStudentForm from "./EditStudentForm";
 import { useParams } from "react-router-dom";
+import { PulseLoader } from "react-spinners";
 
 const EditStudent = () => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ const EditStudent = () => {
     student && teachers ? (
       <EditStudentForm student={student} teachers={teachers} />
     ) : (
-      <p>Loading...</p>
+      <PulseLoader color={"#FFF"} />
     );
   return content;
 };

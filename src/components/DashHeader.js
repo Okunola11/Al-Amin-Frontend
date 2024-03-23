@@ -12,8 +12,9 @@ import {
   faUserGear,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import { PulseLoader } from "react-spinners";
 
-const DASH_REGEX = /^\/dash(\/)?$/;
+/* const DASH_REGEX = /^\/dash(\/)?$/; */
 const USERS_REGEX = /^\/dash\/users(\/)?$/;
 const STUDENTS_REGEX = /^\/dash\/students(\/)?$/;
 const RESULTS_REGEX = /^\/dash\/results(\/)?$/;
@@ -171,7 +172,7 @@ const DashHeader = () => {
   }
 
   const buttonContent = isLoading ? (
-    <p>Loading...</p>
+    <PulseLoader color={"#FFF"} />
   ) : (
     <>
       {usersButton}

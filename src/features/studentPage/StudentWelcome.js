@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useGetStudentsQuery } from "../students/studentsApiSlice";
 import useTitle from "../../hooks/useTitle";
+import { PulseLoader } from "react-spinners";
 
 const StudentWelcome = () => {
   useTitle("Al Amin: Student Portal");
@@ -23,7 +24,7 @@ const StudentWelcome = () => {
   }).format(date);
 
   let content;
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading) content = <PulseLoader color={"#FFF"} />;
 
   if (isError) content = <p>{error?.data?.message}</p>;
 
@@ -77,7 +78,7 @@ const StudentWelcome = () => {
                 </p>
               </>
             ) : (
-              <p>Loading...</p>
+              <PulseLoader color={"#FFF"} />
             )}
           </div>
         </section>
