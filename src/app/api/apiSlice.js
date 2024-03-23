@@ -17,11 +17,9 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.originalStatus === 403) {
-    console.log("Sending refresh token");
-
     //send the refresh token to get new accessToken
     const refreshResult = await baseQuery("/auth/refresh", api, extraOptions);
-    console.log(refreshResult);
+
     if (refreshResult?.data) {
       const usernum = api.getState().auth.user;
       // store the new token

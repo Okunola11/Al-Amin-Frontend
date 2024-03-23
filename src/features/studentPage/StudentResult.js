@@ -25,9 +25,8 @@ const StudentResult = () => {
     const { ids, entities } = results;
 
     const filteredId = ids.filter((id) => entities[id].studentID === usernum);
-    console.log(filteredId);
+
     const resultData = entities[filteredId];
-    console.log(resultData);
 
     content = (
       <>

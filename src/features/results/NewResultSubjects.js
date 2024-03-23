@@ -16,7 +16,6 @@ const NewResultSubjects = ({ students }) => {
   const studentsByClass = students.filter(
     (student) => student.classname === classname
   );
-  console.log(studentsByClass);
 
   const studentsOptions = studentsByClass.map((student) => (
     <option key={student.id} value={student.id}>
@@ -24,19 +23,14 @@ const NewResultSubjects = ({ students }) => {
     </option>
   ));
 
-  console.log(studentsOptions);
-
   const studentData = useSelector((state) =>
     selectStudentsById(state, studentId)
   );
-  console.log(studentData);
 
   let predefinedSubjects;
   if (studentData) {
     predefinedSubjects = studentData.subjects;
   } else predefinedSubjects = [];
-
-  console.log(predefinedSubjects);
 
   const subjectsWithResult = predefinedSubjects?.length
     ? predefinedSubjects.map((subject) => ({

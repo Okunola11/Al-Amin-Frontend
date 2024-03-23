@@ -34,7 +34,6 @@ const StudentWelcome = () => {
     const filteredId = ids.filter((id) => entities[id].usernum === usernum);
 
     const studentData = entities[filteredId];
-    console.log(studentData);
 
     content = (
       <main className="student__main">

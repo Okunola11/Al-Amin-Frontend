@@ -7,7 +7,6 @@ import { usersApiSlice } from "../users/usersApiSlice";
 
 const PreFetch = () => {
   useEffect(() => {
-    console.log("Suscribing");
     const results = store.dispatch(
       resultsApiSlice.endpoints.getResults.initiate()
     );
@@ -17,7 +16,6 @@ const PreFetch = () => {
     const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
 
     return () => {
-      console.log("Unsuscribing");
       results.unsubscribe();
       students.unsubscribe();
       users.unsubscribe();

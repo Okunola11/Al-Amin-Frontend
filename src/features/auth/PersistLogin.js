@@ -19,7 +19,6 @@ const PersistLogin = () => {
   useEffect(() => {
     if (!effectRan.current) {
       const refreshToken = async () => {
-        console.log("Sending refresh token");
         try {
           await refresh();
           setSuccess(true);

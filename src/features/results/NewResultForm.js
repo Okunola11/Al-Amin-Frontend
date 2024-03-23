@@ -6,8 +6,6 @@ const NewResultForm = ({ subjectsWithResult, studentId }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({ subjects: subjectsWithResult });
-  console.log(subjectsWithResult);
-  console.log(formData);
 
   const [createNewResult, { isLoading, isSuccess, isError, error }] =
     useCreateNewResultMutation();
@@ -33,10 +31,7 @@ const NewResultForm = ({ subjectsWithResult, studentId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(studentId);
     await createNewResult({ student: studentId, subjects: formData.subjects });
-    console.log(formData);
-    console.log(formData.subjects);
   };
 
   const canSave = () => {

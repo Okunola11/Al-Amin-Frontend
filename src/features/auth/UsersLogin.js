@@ -42,7 +42,6 @@ const UsersLogin = () => {
     try {
       const response = await userLogin({ usernum, password }).unwrap();
 
-      console.log(response);
       dispatch(setCredentials({ ...response, usernum }));
 
       setUsernum("");
