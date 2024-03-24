@@ -2,6 +2,7 @@ import { useGetStudentsQuery } from "./studentsApiSlice";
 import Student from "./Student";
 import useAuth from "../../hooks/useAuth";
 import useTitle from "../../hooks/useTitle";
+import { PulseLoader } from "react-spinners";
 
 const StudentsList = () => {
   useTitle("Al Amin: Students List");
@@ -17,7 +18,7 @@ const StudentsList = () => {
   } = useGetStudentsQuery();
 
   let content;
-  if (isLoading) content = <p>Loading</p>;
+  if (isLoading) content = <PulseLoader color={"#FFF"} />;
 
   if (isError) {
     content = <p className="errmsg">{error?.data?.message}</p>;
