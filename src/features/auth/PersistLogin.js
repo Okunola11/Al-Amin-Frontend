@@ -37,13 +37,10 @@ const PersistLogin = () => {
 
   let content;
   if (!persist) {
-    console.log("No persist");
     content = <Outlet />;
   } else if (isLoading) {
-    console.log("Loading..");
     content = <PulseLoader color={"#FFF"} />;
   } else if (isError) {
-    console.log("isError");
     content = (
       <p className="errmsg">
         {`${error?.data?.message} - `}
@@ -51,11 +48,8 @@ const PersistLogin = () => {
       </p>
     );
   } else if (isSuccess && success) {
-    console.log("Persist success");
     content = <Outlet />;
   } else if (token && isUninitialized) {
-    console.log("token & uninit");
-    console.log(isUninitialized);
     content = <Outlet />;
   }
 
