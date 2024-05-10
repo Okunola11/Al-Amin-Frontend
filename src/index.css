@@ -542,8 +542,31 @@ tr {
   box-shadow: 10px 0 0 rgba(0, 0, 0, 0.221);
 }
 
-.login__info p {
-  line-height: 1.5rem;
+.login__info h5 {
+  margin-top: 1rem;
+}
+
+.login__info-p {
+  font-size: 11px;
+  line-height: 1rem;
+}
+
+.login-details {
+  font-size: 11px;
+  margin-top: 1rem;
+  color: #808080;
+}
+
+.login-details-container {
+  display: flex;
+}
+
+.login-details__div {
+  border: 2px solid black;
+  padding: 2px;
+  border-radius: 7px;
+  margin-bottom: 1rem;
+  background-color: var(--HEADING);
 }
 
 .login__login {
@@ -1144,8 +1167,8 @@ a:focus {
   }
 
   .login__info p {
-    font-size: 1.75rem;
-    line-height: 2rem;
+    font-size: 14px;
+    line-height: 1rem;
   }
 }
 
@@ -1174,6 +1197,10 @@ a:focus {
 
   .result-link {
     display: none;
+  }
+
+  .login-details__div p {
+    font-size: 10px;
   }
 }
 

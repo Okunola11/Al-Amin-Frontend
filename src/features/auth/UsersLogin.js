@@ -69,16 +69,27 @@ const UsersLogin = () => {
 
       <main className="login__main">
         <section className="login__info">
-          <h2>About Us</h2>
-          <p>
-            Welcome to Al Amin School, where excellence is not just a goal but a
-            way of life. As staffs and students of our prestigious school, it is
-            expected to always uphold the core values of the school at all time.
-            Our staff are of upmost importance as they serve as the mentors for
-            the bright minds of the next great generation. Remember to always
-            treat every student with utmost importance, care and equality. Every
-            child is a future leader. Happy teaching and learning!
+          <h2>Hi, welcome 👋</h2>
+          <p className="login__info-p">
+            This primarily display brief information or updates for the
+            Employees but I have decided to put in login credentials details for
+            the sole purpose of exploring and testing the application.
           </p>
+          <h5>Login with the following credentials:</h5>
+          <div className="login-details-container">
+            <div className="login-details">
+              <div className="login-details__div">
+                <p>Username: 2018-Ab</p>
+                <p>Password: aaaa</p>
+                <p>Roles: Employee/Admin</p>
+              </div>
+              <div className="login-details__div">
+                <p>Username: 2018-AC</p>
+                <p>Password: aaaa</p>
+                <p>Roles: Employee</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="login__login">
